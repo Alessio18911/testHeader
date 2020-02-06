@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Header</title>
+    <link rel="stylesheet" href="css/style-v1.min.css" />
+  </head>
+  <body>
+    <header class="page-header wrapper" id="header">
+      <button class="page-header__burger burger" type="button" @click="onBurgerClick">
+        <span></span>
+      </button>
+      <div class="page-header__main-nav-wrapper">
+        <ul class="page-header__main-nav main-nav list">
+          <li class="main-nav__item" v-for="(item, i) in header" :key="i">
+            <a href="" class="main-nav__item-link link">
+              <span>{{ item.itemName }}</span>
+              <span class="main-nav__arrow-icon" v-if="item.subitems">
+                <svg viewBox="0 0 24 13" width="24" height="13" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M22 .4l-9.9 10L2.2.4C1.7-.1 1-.1.5.4S0 1.6.5 2.1l10.8 10.5c.5.5 1.2.5 1.7 0L23.7 2.1c.5-.5.5-1.2 0-1.7s-1.3-.5-1.7 0z"/>
+                </svg>
+              </span>
+            </a>
+            <div class="main-nav__submenu-wrapper">
+              <ul class="main-nav__submenu submenu list" v-if="item.subitems">
+                <li class="submenu__item" v-for="(subitem, j) in item.subitems">
+                  <a href="" class="submenu__item-link link">
+                    <span>{{ subitem.name }}</span></a>
+                    <span class="submenu__arrow-icon" v-if="subitem.subsubitems">
+                      <svg viewBox="0 0 24 13" width="24" height="13" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22 .4l-9.9 10L2.2.4C1.7-.1 1-.1.5.4S0 1.6.5 2.1l10.8 10.5c.5.5 1.2.5 1.7 0L23.7 2.1c.5-.5.5-1.2 0-1.7s-1.3-.5-1.7 0z"/>
+                      </svg>
+                    </span>
+                  </a>
+                  <ul class="submenu__subsubmenu subsubmenu list" v-if="subitem.subsubitems">
+                    <li class="subsubmenu__item" v-for="(subsubitem, k) in subitem.subsubitems">
+                      <a href="" class="subsubmenu__item-link link">{{ subsubitem }}</a>
+                    </li>
+                  </ul>
+
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/script.min.js"></script>
+    <script>
+      const header = new Vue({
+        el: "#header",
+        data: {
+          header: [
+            { itemName: "Элемент 1" },
+            {
+              itemName: "Элемент 2",
+              subitems: [
+                {
+                  name: "Элемент 2.1"
+                },
+                {
+                  name: "Элемент 2.2",
+                  subsubitems: [
+                    "Элемент 2.2.1",
+                    "Элемент 2.2.2",
+                    "Элемент 2.2.3"
+                  ]
+                },
+                {
+                  name: "Элемент 2.3"
+                },
+                {
+                  name: "Элемент 2.4",
+                  subsubitems: [
+                    "Элемент 2.4.1",
+                    "Элемент 2.4.2",
+                    "Элемент 2.4.3",
+                    "Элемент 2.4.4",
+                    "Элемент 2.4.5",
+                    "Элемент 2.4.6",
+                    "Элемент 2.4.7"
+                  ]
+                },
+                {
+                  name: "Элемент 2.5"
+                },
+                {
+                  name: "Элемент 2.6"
+                }
+              ]
+            },
+            { itemName: "Элемент 3" },
+            {
+              itemName: "Элемент 4",
+              subitems: [
+                {
+                  name: "Элемент 4.1"
+                },
+                {
+                  name: "Элемент 4.2"
+                }
+              ]
+            },
+            { itemName: "Элемент 5" },
+            { itemName: "Элемент 6" }
+          ]
+        },
+
+        methods: {
+          onBurgerClick: function() {
+            const burger = document.querySelector(".burger");
+            burger.classList.toggle("burger--active");
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

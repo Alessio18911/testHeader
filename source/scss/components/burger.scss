@@ -1,0 +1,77 @@
+.burger {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 27px;
+  height: 24px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease-in-out 0.15s;
+
+  &.burger--active {
+    transform: rotate(45deg);
+
+    &::before,
+    &::after {
+      top: calc(50% - 2px);
+      @include transition(top);
+      animation: width-change 0.3s ease-in-out;
+    }
+
+    &::after {
+      transform: rotate(90deg);
+      transition: top 0.15s ease-in-out, transform 0.15s ease-in-out 0.3s;
+    }
+
+    span {
+      width: 0;
+    }
+
+    + .page-header__main-nav-wrapper {
+      max-height: 800px;
+    }
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 100%;
+    height: 4px;
+    background-color: $blue1;
+    transform: translateX(-50%);
+    transition: top 0.15s ease-in-out 0.3s;
+  }
+
+  &::before {
+    top: 0;
+  }
+
+  &::after {
+    top: calc(100% - 4px);
+    transform-origin: 7px -5px;
+    transition: top 0.15s ease-in-out 0.3s, transform 0.15s ease-in;
+  }
+
+  span {
+    width: 100%;
+    height: 4px;
+    background-color: $blue1;
+    @include transition(width);
+  }
+
+  @keyframes width-change {
+    50% {
+      width: 4px;
+    }
+
+    100% {
+      width: 100%;
+    }
+  }
+}

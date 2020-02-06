@@ -1,0 +1,120 @@
+.main-nav {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+
+  @include mq(1023) {
+    display: block;
+    padding: 10px 0;
+  }
+
+  &__item {
+    padding: 0 30px;
+    @include transition(background-color);
+
+    &:hover {
+      .main-nav__item-link {
+        &::after {
+          background-color: $blue1;
+        }
+      }
+
+      .main-nav__submenu-wrapper {
+        max-height: 600px;
+
+        @include mq(1023) {
+          max-height: 0;
+        }
+      }
+    }
+
+    &:active {
+      background-color: $blue1;
+
+      .main-nav__item-link {
+        color: $white;
+      }
+
+      .main-nav__arrow-icon svg {
+        fill: $white;
+      }
+    }
+  }
+
+  &__item-link {
+    position: relative;
+    display: block;
+    padding: 20px 0;
+    font-weight: 900;
+    color: $blue1;
+    transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out;
+
+    @include mq(1023) {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background-color: transparent;
+      @include transition(background-color);
+
+      @include mq(1023) {
+        top: 0;
+        left: -30px;
+        bottom: auto;
+        width: 4px;
+        height: 100%;
+      }
+    }
+  }
+
+  &__arrow-icon {
+    display: none;
+    position: relative;
+    width: 42px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    @include mq(1023) {
+      display: flex;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 100%;
+      background-color: $blue1;
+    }
+
+    svg {
+      margin: auto;
+      fill: $blue1;
+      @include transition(fill);
+    }
+  }
+
+  &__submenu-wrapper {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    @include transition(max-height);
+
+    @include mq(1023) {
+      position: static;
+    }
+  }
+}

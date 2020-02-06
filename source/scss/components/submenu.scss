@@ -1,0 +1,63 @@
+.submenu {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 0 30px;
+  color: $blue2;
+
+  @include mq(1023) {
+    display: block;
+    padding: 0;
+  }
+
+  &__item-link {
+    display: block;
+    padding: 20px 40px;
+    font-size: 18px;
+    font-weight: 700;
+    color: inherit;
+    text-align: center;
+    transition: color 0.25s ease-in-out, opacity 0.25s ease-in-out;
+
+    @include mq(1023) {
+      padding: 10px 20px;
+      text-align: left;
+    }
+
+    &:hover {
+      color: $violet1;
+    }
+
+    &:active {
+      opacity: 0.4;
+    }
+  }
+
+  &__arrow-icon {
+    display: none;
+    position: relative;
+    width: 42px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    @include mq(1023) {
+      display: flex;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 100%;
+      background-color: $blue1;
+    }
+
+    svg {
+      margin: auto;
+      fill: $blue1;
+      @include transition(fill);
+    }
+  }
+}

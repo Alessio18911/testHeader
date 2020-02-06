@@ -1,0 +1,32 @@
+.page-header {
+  @include mq(1023) {
+    position: relative;
+    display: flex;
+    padding: 15px 30px;
+    box-shadow: 3px 2px 20px 0 $blue2;
+  }
+
+  &__main-nav-wrapper {
+    @include transition(max-height);
+
+    @include mq(1023) {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      max-height: 0;
+      overflow: hidden;
+    }
+  }
+
+
+
+  &__burger {
+    display: none;
+
+    @include mq(1023) {
+      display: flex;
+      margin: 0 0 0 auto;
+    }
+  }
+}

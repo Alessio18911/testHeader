@@ -1,0 +1,39 @@
+.subsubmenu {
+  padding: 0 0 0 44px;
+  font-family: "Gotham Pro", "Arial", sans-serif;
+
+  @include mq(1023) {
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  &__item-link {
+    position: relative;
+    padding: 7px 0;
+    color: inherit;
+    transition: color 0.25s ease-in-out, opacity 0.25s ease-in-out;
+
+    &:hover {
+      color: $violet2;
+
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &:active {
+      opacity: 0.4;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: $violet2;
+      @include transition(width);
+    }
+  }
+}
