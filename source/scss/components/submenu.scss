@@ -6,7 +6,7 @@
 
   @include mq(1023) {
     display: block;
-    padding: 0;
+    padding: 0 15px;
   }
 
   &__item-link {
@@ -19,7 +19,9 @@
     transition: color 0.25s ease-in-out, opacity 0.25s ease-in-out;
 
     @include mq(1023) {
-      padding: 10px 20px;
+      position: relative;
+      padding: 0 60px 0 0;
+      font-size: 15px;
       text-align: left;
     }
 
@@ -29,6 +31,27 @@
 
     &:active {
       opacity: 0.4;
+
+      @include mq(1023) {
+        opacity: 1;
+      }
+    }
+
+    &--active {
+      .submenu__arrow-button svg {
+        transform: rotate(180deg);
+      }
+
+      + .submenu__subsubmenu {
+        max-height: 600px;
+      }
+    }
+  }
+
+  &__item-link-text {
+    @include mq(1023) {
+      display: block;
+      padding: 7px 0;
     }
   }
 
@@ -36,8 +59,20 @@
     display: none;
 
     @include mq(1023) {
+      position: absolute;
+      top: 0;
+      right: 0;
       display: flex;
-      flex-shrink: 0;
     }
+
+    svg {
+      @include mq(1023) {
+        width: 20px;
+      }
+    }
+  }
+
+  &__subsubmenu {
+    @include transition(max-height);
   }
 }

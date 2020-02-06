@@ -8,6 +8,24 @@
     padding: 10px 0;
   }
 
+  &__item {
+    @include mq(1023) {
+      padding: 0 30px;
+    }
+
+    &:hover {
+      .main-nav__item-link-text::after {
+        background-color: $blue1;
+      }
+
+      @media (min-width: 1024px) {
+        .main-nav__submenu-wrapper {
+          max-height: 600px;
+        }
+      }
+    }
+  }
+
   &__item-link {
     display: block;
     padding: 20px 30px 0 30px;
@@ -25,18 +43,6 @@
       }
     }
 
-    &:hover {
-        .main-nav__item-link-text::after {
-          background-color: $blue1;
-        }
-
-        @media (min-width: 1024px) {
-        + .main-nav__submenu-wrapper {
-          max-height: 600px;
-        }
-      }
-    }
-
     &:active {
       color: $white;
       background-color: $blue1;
@@ -48,9 +54,8 @@
     }
 
     @include mq(1023) {
-      display: flex;
-      justify-content: space-between;
-      padding: 0;
+      position: relative;
+      padding: 0 60px 0 0;
     }
   }
 
@@ -60,7 +65,7 @@
     padding: 0 0 20px;
 
     @include mq(1023) {
-      padding: 10px 20px 10px 30px;
+      padding: 10px 0;
     }
 
     &::after {
@@ -76,6 +81,7 @@
       @include mq(1023) {
         top: 0;
         bottom: auto;
+        left: -30px;
         width: 4px;
         height: 100%;
       }
@@ -86,8 +92,10 @@
     display: none;
 
     @include mq(1023) {
+      position: absolute;
+      top: 0;
+      right: 0;
       display: flex;
-      flex-shrink: 0;
     }
   }
 
