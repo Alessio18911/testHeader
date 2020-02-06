@@ -1,0 +1,33 @@
+.arrow-button {
+  position: relative;
+  display: flex;
+  width: 42px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  @include transition(background-color);
+
+  &:hover {
+    background-color: $blue1;
+
+    svg {
+      fill: $white;
+    }
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background-color: $blue1;
+  }
+
+  svg {
+    margin: auto;
+    fill: $blue1;
+    transition: transform 0.25s ease-in-out, fill 0.25s ease-in-out;
+  }
+}

@@ -32,32 +32,12 @@
     }
   }
 
-  &__arrow-icon {
+  &__arrow-button {
     display: none;
-    position: relative;
-    width: 42px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
 
     @include mq(1023) {
       display: flex;
-    }
-
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 2px;
-      height: 100%;
-      background-color: $blue1;
-    }
-
-    svg {
-      margin: auto;
-      fill: $blue1;
-      @include transition(fill);
+      flex-shrink: 0;
     }
   }
 }
