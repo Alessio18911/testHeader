@@ -16,8 +16,8 @@
         <ul class="page-header__main-nav main-nav list">
           <li class="main-nav__item" v-for="(item, i) in header" :key="i">
             <a href="" class="main-nav__item-link link">
-              <span>{{ item.itemName }}</span>
-              <span class="main-nav__arrow-icon" v-if="item.subitems">
+              <span class="main-nav__item-link-text">{{ item.itemName }}</span>
+              <span class="main-nav__arrow-icon" v-if="item.subitems" @click.prevent="onArrowClick">
                 <svg viewBox="0 0 24 13" width="24" height="13" xmlns="http://www.w3.org/2000/svg">
                   <path d="M22 .4l-9.9 10L2.2.4C1.7-.1 1-.1.5.4S0 1.6.5 2.1l10.8 10.5c.5.5 1.2.5 1.7 0L23.7 2.1c.5-.5.5-1.2 0-1.7s-1.3-.5-1.7 0z"/>
                 </svg>
@@ -114,6 +114,22 @@
           onBurgerClick: function() {
             const burger = document.querySelector(".burger");
             burger.classList.toggle("burger--active");
+          },
+
+          onArrowClick: function(evt) {
+            const activeClass = "main-nav__item-link--active";
+            const mainNavItem = evt.target.closest(".main-nav__item-link");
+            this.removeActiveClass(activeClass, mainNavItem);
+
+            mainNavItem.classList.toggle(activeClass);
+          },
+
+          removeActiveClass: function(activeClass, currentActiveLink) {
+            const activeLink = document.querySelector("." + activeClass);
+
+            if (activeLink && activeLink !== currentActiveLink) {
+              activeLink.classList.remove(activeClass);
+            }
           }
         }
       });
