@@ -106,11 +106,12 @@
     width: 100%;
     max-height: 0;
     background-color: $grey;
-    overflow: scroll;
+    overflow: hidden;
     @include transition(max-height);
 
     @include mq(1023) {
       position: static;
+      overflow-y: scroll;
     }
   }
 }
