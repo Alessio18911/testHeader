@@ -113,30 +113,46 @@
         methods: {
           onBurgerClick: function() {
             const burger = document.querySelector(".burger");
-            burger.classList.toggle("burger--active");
+
+            if (!burger.classList.contains("burger--active")) {
+              burger.classList.add("burger--active");
+            } else {
+              burger.classList.remove("burger--active");
+              this.removeClass("main-nav__item-link--active");
+              this.removeClass("submenu__item-link--active");
+            }
           },
 
           onMainNavArrowClick: function(evt) {
-            const activeClass = "main-nav__item-link--active";
-            const mainNavItem = evt.target.closest(".main-nav__item-link");
-            this.removeActiveClass(activeClass, mainNavItem);
-
-            mainNavItem.classList.toggle(activeClass);
+            this.toggleClass(evt, "main-nav__item-link", "submenu__item-link");
           },
 
           onSubmenuArrowClick: function(evt) {
-            const activeClass = "submenu__item-link--active";
-            const submenuItem = evt.target.closest(".submenu__item-link");
-            this.removeActiveClass(activeClass, submenuItem);
-
-            submenuItem.classList.toggle(activeClass);
+            this.toggleClass(evt, "submenu__item-link");
           },
 
-          removeActiveClass: function(activeClass, currentActiveLink) {
-            const activeMainLink = document.querySelector("." + activeClass);
+          toggleClass: function(evt, linkClass, submenuLinkClass) {
+            const suffix = "--active";
+            const activeLinkClass = linkClass + suffix;
+            const parentLink = evt.target.closest("." + linkClass);
 
-            if (activeMainLink && activeMainLink !== currentActiveLink) {
-              activeMainLink.classList.remove(activeClass);
+            if (submenuLinkClass) {
+              this.removeClass(submenuLinkClass + suffix);
+            }
+
+            if (!parentLink.classList.contains(activeLinkClass)) {
+              this.removeClass(activeLinkClass);
+              parentLink.classList.add(activeLinkClass);
+            } else {
+              parentLink.classList.remove(activeLinkClass);
+            }
+          },
+
+          removeClass: function(activeLinkClass) {
+            const activeLink = document.querySelector("." + activeLinkClass);
+
+            if (activeLink) {
+              activeLink.classList.remove(activeLinkClass);
             }
           }
         }
