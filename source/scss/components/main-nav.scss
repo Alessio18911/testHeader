@@ -33,7 +33,6 @@
     font-weight: 900;
     color: $blue1;
     transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out;
-    outline: 1px solid green;
 
     &--active {
       .main-nav__arrow-button svg {

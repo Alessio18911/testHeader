@@ -1,4 +1,4 @@
-const { src, dest, series, parallel, watch } = require("gulp");
+const { src, dest, series, watch } = require("gulp");
 const plumber = require("gulp-plumber");
 const del = require("del");
 const postcss = require("gulp-postcss");
@@ -8,10 +8,8 @@ const sass = require("gulp-sass");
 const rename = require("gulp-rename");
 const csso = require("gulp-csso");
 const htmlmin = require("gulp-html-minify");
-const babel = require("gulp-babel");
-const uglify = require("gulp-uglify");
 const browserSync = require("browser-sync").create();
-const build = series(clean, copy, parallel(css, js), html);
+const build = series(clean, copy, css, html);
 
 function html() {
   return src("source/*.html")
@@ -28,18 +26,6 @@ function css() {
     .pipe(rename({ basename: "style-v1", suffix: ".min" }))
     .pipe(dest("dist/css", { sourcemaps: true }))
     .pipe(browserSync.stream());
-}
-
-function js() {
-  return src("source/js/*", { sourcemaps: true })
-    .pipe(
-      babel({
-        presets: ["@babel/env"]
-      })
-    )
-    .pipe(uglify())
-    .pipe(rename({ suffix: ".min" }))
-    .pipe(dest("dist/js", { sourcemaps: true }));
 }
 
 function copy() {
@@ -60,7 +46,6 @@ function server() {
 
   watch("source/*.html", series(html, refreshPage));
   watch("source/scss/**/*", css);
-  watch("source/js/**/*", series(js, refreshPage));
 }
 
 function refreshPage(done) {
