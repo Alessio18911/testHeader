@@ -15,7 +15,7 @@
       <div class="page-header__main-nav-wrapper">
         <ul class="page-header__main-nav main-nav list">
           <li class="main-nav__item" v-for="(item, i) in header" :key="i">
-            <a :href="item.href" class="main-nav__item-link link">
+            <a :href="item.href" class="main-nav__item-link link" :data-position="i">
               <span class="main-nav__item-link-text">{{ item.name }}</span>
               <span class="main-nav__arrow-button arrow-button" v-if="item.subitems" @click.prevent="onMainNavArrowClick">
                 <svg viewBox="0 0 24 13" width="24" height="13" xmlns="http://www.w3.org/2000/svg">
@@ -49,6 +49,7 @@
     </header>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="js/script.min.js"></script>
     <script>
       const header = new Vue({
@@ -264,6 +265,11 @@
           },
 
           onMainNavArrowClick: function(evt) {
+            window.setTimeout(function () {
+              const target = evt.target.closest(".main-nav__item-link");
+              $("body, html").animate({ scrollTop: target.offsetTop + 54 }, 500);
+            }, 260);
+
             this.toggleClass(evt, "main-nav__item-link", "submenu__item-link");
           },
 
