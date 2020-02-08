@@ -51,204 +51,206 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script>
+      const data = {
+        header: [
+          {
+            href: "#",
+            name: "Элемент 1"
+          },
+          {
+            href: "#",
+            name: "Элемент 2",
+            subitems: [
+              {
+                href: "#",
+                name: "Элемент 2.1"
+              },
+              {
+                href: "#",
+                name: "Элемент 2.2",
+                subsubitems: [
+                  {
+                    href: "#",
+                    name: "Элемент 2.2.1"
+                  },
+                  {
+                    href: "#",
+                    name: "Элемент 2.2.2"
+                  },
+                  {
+                    href: "#",
+                    name: "Элемент 2.2.3"
+                  }
+                ]
+              },
+              {
+                href: "#",
+                name: "Элемент 2.3"
+              },
+              {
+                href: "#",
+                name: "Элемент 2.4",
+                subsubitems: [
+                  {
+                    href: "#",
+                    name: "Элемент 2.4.1"
+                  },
+                  {
+                    href: "#",
+                    name: "Элемент 2.4.2"
+                  },
+                  {
+                    href: "#",
+                    name: "Элемент 2.4.3"
+                  },
+                  {
+                    href: "#",
+                    name: "Элемент 2.4.4"
+                  },
+                  {
+                    href: "#",
+                    name: "Элемент 2.4.5"
+                  },
+                  {
+                    href: "#",
+                    name: "Элемент 2.4.6"
+                  },
+                  {
+                    href: "#",
+                    name: "Элемент 2.4.7"
+                  }
+                ]
+              },
+              {
+                href: "#",
+                name: "Элемент 2.5"
+              },
+              {
+                href: "#",
+                name: "Элемент 2.6"
+              }
+            ]
+          },
+          {
+            href: "#",
+            name: "Элемент 3"
+          },
+          {
+            href: "#",
+            name: "Элемент 4",
+            subitems: [
+              {
+                href: "#",
+                name: "Элемент 4.1"
+              },
+              {
+                href: "#",
+                name: "Элемент 4.2"
+              }
+            ]
+          },
+          {
+            href: "#",
+            name: "Элемент 5",
+            subitems: [
+              {
+                href: "#",
+                name: "Элемент 5.1"
+              },
+              {
+                href: "#",
+                name: "Элемент 5.2",
+                subsubitems: [
+                  {
+                    href: "#",
+                    name: "Элемент 5.2.1"
+                  },
+                  {
+                    href: "#",
+                    name: "Элемент 5.2.2"
+                  },
+                  {
+                    href: "#",
+                    name: "Элемент 5.2.3"
+                  },
+                  {
+                    href: "#",
+                    name: "Элемент 5.2.4"
+                  },
+                  {
+                    href: "#",
+                    name: "Элемент 5.2.5"
+                  }
+                ]
+              },
+              {
+                href: "#",
+                name: "Элемент 5.3"
+              },
+              {
+                href: "#",
+                name: "Элемент 5.4"
+              },
+              {
+                href: "#",
+                name: "Элемент 5.5",
+                subsubitems: [
+                  {
+                    href: "#",
+                    name: "Элемент 5.2.1"
+                  },
+                  {
+                    href: "#",
+                    name: "Элемент 5.2.2"
+                  },
+                  {
+                    href: "#",
+                    name: "Элемент 5.2.3"
+                  },
+                  {
+                    href: "#",
+                    name: "Элемент 5.2.4"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            href: "#",
+            name: "Элемент 6",
+            subitems: [
+              {
+                href: "#",
+                name: "Элемент 6.1"
+              },
+              {
+                href: "#",
+                name: "Элемент 6.2"
+              },
+              {
+                href: "#",
+                name: "Элемент 6.3"
+              },
+              {
+                href: "#",
+                name: "Элемент 6.4"
+              },
+              {
+                href: "#",
+                name: "Элемент 6.5"
+              },
+              {
+                href: "#",
+                name: "Элемент 6.6"
+              }
+            ]
+          }
+        ]
+      };
+
       const header = new Vue({
         el: "#header",
-        data: {
-          header: [
-            {
-              href: "#",
-              name: "Элемент 1"
-            },
-            {
-              href: "#",
-              name: "Элемент 2",
-              subitems: [
-                {
-                  href: "#",
-                  name: "Элемент 2.1"
-                },
-                {
-                  href: "#",
-                  name: "Элемент 2.2",
-                  subsubitems: [
-                    {
-                      href: "#",
-                      name: "Элемент 2.2.1"
-                    },
-                    {
-                      href: "#",
-                      name: "Элемент 2.2.2"
-                    },
-                    {
-                      href: "#",
-                      name: "Элемент 2.2.3"
-                    }
-                  ]
-                },
-                {
-                  href: "#",
-                  name: "Элемент 2.3"
-                },
-                {
-                  href: "#",
-                  name: "Элемент 2.4",
-                  subsubitems: [
-                    {
-                      href: "#",
-                      name: "Элемент 2.4.1"
-                    },
-                    {
-                      href: "#",
-                      name: "Элемент 2.4.2"
-                    },
-                    {
-                      href: "#",
-                      name: "Элемент 2.4.3"
-                    },
-                    {
-                      href: "#",
-                      name: "Элемент 2.4.4"
-                    },
-                    {
-                      href: "#",
-                      name: "Элемент 2.4.5"
-                    },
-                    {
-                      href: "#",
-                      name: "Элемент 2.4.6"
-                    },
-                    {
-                      href: "#",
-                      name: "Элемент 2.4.7"
-                    }
-                  ]
-                },
-                {
-                  href: "#",
-                  name: "Элемент 2.5"
-                },
-                {
-                  href: "#",
-                  name: "Элемент 2.6"
-                }
-              ]
-            },
-            {
-              href: "#",
-              name: "Элемент 3"
-            },
-            {
-              href: "#",
-              name: "Элемент 4",
-              subitems: [
-                {
-                  href: "#",
-                  name: "Элемент 4.1"
-                },
-                {
-                  href: "#",
-                  name: "Элемент 4.2"
-                }
-              ]
-            },
-            {
-              href: "#",
-              name: "Элемент 5",
-              subitems: [
-                {
-                  href: "#",
-                  name: "Элемент 5.1"
-                },
-                {
-                  href: "#",
-                  name: "Элемент 5.2",
-                  subsubitems: [
-                    {
-                      href: "#",
-                      name: "Элемент 5.2.1"
-                    },
-                    {
-                      href: "#",
-                      name: "Элемент 5.2.2"
-                    },
-                    {
-                      href: "#",
-                      name: "Элемент 5.2.3"
-                    },
-                    {
-                      href: "#",
-                      name: "Элемент 5.2.4"
-                    },
-                    {
-                      href: "#",
-                      name: "Элемент 5.2.5"
-                    }
-                  ]
-                },
-                {
-                  href: "#",
-                  name: "Элемент 5.3"
-                },
-                {
-                  href: "#",
-                  name: "Элемент 5.4"
-                },
-                {
-                  href: "#",
-                  name: "Элемент 5.5",
-                  subsubitems: [
-                    {
-                      href: "#",
-                      name: "Элемент 5.2.1"
-                    },
-                    {
-                      href: "#",
-                      name: "Элемент 5.2.2"
-                    },
-                    {
-                      href: "#",
-                      name: "Элемент 5.2.3"
-                    },
-                    {
-                      href: "#",
-                      name: "Элемент 5.2.4"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              href: "#",
-              name: "Элемент 6",
-              subitems: [
-                {
-                  href: "#",
-                  name: "Элемент 6.1"
-                },
-                {
-                  href: "#",
-                  name: "Элемент 6.2"
-                },
-                {
-                  href: "#",
-                  name: "Элемент 6.3"
-                },
-                {
-                  href: "#",
-                  name: "Элемент 6.4"
-                },
-                {
-                  href: "#",
-                  name: "Элемент 6.5"
-                },
-                {
-                  href: "#",
-                  name: "Элемент 6.6"
-                }
-              ]
-            }
-          ]
-        },
+        data: data,
 
         methods: {
           onBurgerClick: function() {
